@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './CounterControl.css';
+import classes from './CounterControl.css';
 
 const counterControl = (props) => (
-    <div className="CounterControl" onClick={props.clicked}>
+    <div className={classes.CounterControl} onClick={props.clicked}>
         {props.label}
     </div>
 );

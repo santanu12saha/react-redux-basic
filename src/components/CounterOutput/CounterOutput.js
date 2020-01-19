@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './CounterOutput.css';
+import classes from './CounterOutput.css';
 
 const counterOutput = (props) => (
-    <div className="CounterOutput">
+    <div className={classes.CounterOutput}>
         Current Counter: {props.value}
     </div>
 );
