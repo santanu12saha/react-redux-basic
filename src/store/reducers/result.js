@@ -5,20 +5,20 @@ const initialState = {
     results: []
 }
 
+const storeResult = (state, action) => {
+    return updateObject(state, {results: state.results.concat({id: new Date(), value: action.result * 2})});
+};
+
+const deleteResult = (state, action) => {
+    const updateArray = state.results.filter(result => result.id !== action.resultElId);
+    return updateObject(state, {results: updateArray});      
+};
+
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case actionsTypes.STORE_RESULT :
-            return updateObject(state, {results: state.results.concat({id: new Date(), value: action.result})});
-            //results: state.results.concat({id: new Date(), value: action.result * 2})
-        case actionsTypes.DELETE_RESULT :
-           // const id = 2;
-           // const newArray = [...state.results];  // one way removing element of without mutating the orginal array 
-           // newArray.splice(id, 1); 
-           // another way 
-           const updateArray = state.results.filter(result => result.id !== action.resultElId);
-           return updateObject(state, {results: updateArray});      
-        default:
-            return state;     
+        case actionsTypes.STORE_RESULT : return storeResult(state, action);
+        case actionsTypes.DELETE_RESULT : return deleteResult(state, action);
+        default : return state;     
 
     }
 }
